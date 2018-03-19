@@ -1,3 +1,6 @@
 node {
-	echo "Test"
+	stage('Test') {
+		checkout scm
+		echo "Test"
+	}
 }
