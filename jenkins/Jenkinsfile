@@ -2,5 +2,6 @@ node {
 	stage('Test') {
 		checkout scm
 		echo "Test"
+		sh "ssh ec2-user@${elkTarget} touch ~/test.txt; rm ~/test.txt"
 	}
 }

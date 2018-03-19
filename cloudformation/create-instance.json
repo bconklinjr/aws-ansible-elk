@@ -11,43 +11,56 @@
 			"Properties" : {
 				"AvailabilityZone" : "us-east-1a",
 				"ImageId" : "ami-1853ac65",
+                "InstanceType" : "t2.small",
 				"SecurityGroups" : [{"Ref" : "InstanceSecurityGroup"}],
 				"KeyName": {
 		          "Ref": "KeyName"
 		        }
 			}
-		}
-	},
-	"InstanceSecurityGroup": {
-        "Type": "AWS::EC2::SecurityGroup",
-        "Properties": {
-            "GroupDescription": "Jenkins and Ansible Security Group",
-            "SecurityGroupIngress": [
-                {
-                    "IpProtocol": "tcp",
-                    "FromPort": "22",
-                    "ToPort": "22",
-                    "CidrIp": "0.0.0.0/0"
-                },
-                {
-                	"IpProtocol": "tcp",
-                    "FromPort": "80",
-                    "ToPort": "80",
-                    "CidrIp": "0.0.0.0/0"
-                },
-                {
-                	"IpProtocol": "tcp",
-                    "FromPort": "8080",
-                    "ToPort": "8080",
-                    "CidrIp": "0.0.0.0/0"
-                },
-                {
-                	"IpProtocol": "tcp",
-                    "FromPort": "443",
-                    "ToPort": "443",
-                    "CidrIp": "0.0.0.0/0"
+		},
+        "jenkins" : {
+            "Type" : "AWS::EC2::Instance",
+            "Properties" : {
+                "AvailabilityZone" : "us-east-1a",
+                "ImageId" : "ami-1853ac65",
+                "InstanceType" : "t2.micro",
+                "SecurityGroups" : [{"Ref" : "InstanceSecurityGroup"}],
+                "KeyName": {
+                  "Ref": "KeyName"
                 }
-            ]
+            }
+        },
+        "InstanceSecurityGroup" : {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Jenkins and Ansible Security Group",
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": "22",
+                        "ToPort": "22",
+                        "CidrIp": "0.0.0.0/0"
+                    },
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": "80",
+                        "ToPort": "80",
+                        "CidrIp": "0.0.0.0/0"
+                    },
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": "8080",
+                        "ToPort": "8080",
+                        "CidrIp": "0.0.0.0/0"
+                    },
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": "443",
+                        "ToPort": "443",
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ]
+            }
         }
-    }
+	}
 }
