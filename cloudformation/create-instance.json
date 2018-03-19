@@ -14,7 +14,7 @@
 				"SecurityGroups" : [{"Ref" : "InstanceSecurityGroup"}],
 				"KeyName": {
 		          "Ref": "KeyName"
-		        },
+		        }
 			}
 		}
 	},
