@@ -1,9 +1,14 @@
 node {
-	stage('Test') {
+	stage('Prepare Ansible Hosts') {
 		checkout scm
-		echo "Test"
-		echo (
-			sh (returnStdout: true, script: "ssh -o \"StrictHostKeyChecking=no\" -v ec2-user@${elkTarget} ls")
+		sh "echo ${elkTarget} >> ./ansible/ansible_hosts"
+	}
+
+	stage('Install Java 8') {
+		ansiblePlaybook(
+			playbook: './ansible/roles/java8/tasks/main.yml',
+			inventory: './ansible/ansible_hosts',
+			credentialsId: 'id_rsa'
 		)
 	}
 }
