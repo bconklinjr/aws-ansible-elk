@@ -2,6 +2,8 @@ node {
 	stage('Test') {
 		checkout scm
 		echo "Test"
-		sh (returnStdout: true, script: "ssh -o \"StrictHostKeyChecking=no\" -v ec2-user@${elkTarget} ls")
+		echo (
+			sh (returnStdout: true, script: "ssh -o \"StrictHostKeyChecking=no\" -v ec2-user@${elkTarget} ls")
+		)
 	}
 }
