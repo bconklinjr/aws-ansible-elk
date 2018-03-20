@@ -2,6 +2,6 @@ node {
 	stage('Test') {
 		checkout scm
 		echo "Test"
-		sh "ssh -o \"StrictHostKeyChecking=no\" -v -i \"/home/ec2-user/.ssh/id_rsa\" ec2-user@${elkTarget} touch ~/test.txt; rm ~/test.txt"
+		sh "ssh -o \"StrictHostKeyChecking=no\" -v ec2-user@${elkTarget} ls"
 	}
 }
