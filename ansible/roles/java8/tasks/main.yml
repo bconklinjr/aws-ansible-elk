@@ -8,3 +8,4 @@
      name: java-1.8.0
      state: latest
     become: true
+    become_method: sudo
