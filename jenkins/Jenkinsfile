@@ -5,6 +5,10 @@ node {
 	}
 
 	stage('Install Java 8') {
-		ansiblePlaybook playbook: './ansible/roles/java8/tasks/main.yml', inventory: './ansible/ansible_hosts', credentialsId: 'id_rsa'
+		ansiblePlaybook(
+			playbook: './ansible/roles/java8/tasks/main.yml',
+			inventory: './ansible/ansible_hosts',
+			credentialsId: 'id_rsa'
+		)
 	}
 }
