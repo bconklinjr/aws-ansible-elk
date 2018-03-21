@@ -12,11 +12,11 @@
      mode: 0644
     become: true
 
- - name: Install Elasticsearch
-   yum: 
-    name: elasticsearch
-    state: present
-   become: true
+  - name: Install Elasticsearch
+    yum: 
+     name: elasticsearch
+     state: present
+    become: true
 
   - name: Update the config file to allow outside access
     lineinfile:
