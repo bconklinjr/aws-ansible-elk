@@ -31,6 +31,20 @@
      line: 'http.port: 9200'
     become: true
 
+  - name: Configure heap min size
+    lineinfile: 
+     destfile: /etc/elasticsearch/jvm.options
+     regexp: '-Xms2g'
+     line: '-Xms200m'
+    become: true
+
+  - name: Configure heap max size
+    lineinfile: 
+     destfile: /etc/elasticsearch/jvm.options
+     regexp: '-Xmx2g'
+     line: '-Xmx200m'
+    become: true
+
   - name: Start Elasticsearch
     service:
      name: elasticsearch
