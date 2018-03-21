@@ -29,6 +29,7 @@
      destfile: /etc/elasticsearch/elasticsearch.yml
      regexp: 'http.port:'
      line: 'http.port: 9200'
+    become: true
 
   - name: Start Elasticsearch
     service:
