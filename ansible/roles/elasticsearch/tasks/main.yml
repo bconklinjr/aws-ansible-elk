@@ -20,9 +20,9 @@
   - name: Update the config file to allow outside access
     lineinfile:
      destfile: /etc/elasticsearch/elasticsearch.yml
-     owner: elasticsearch
      regexp: 'network.host:'
      line: 'network.host: 0.0.0.0'
+    become: true
 
   - name: Update the port in config file 
     lineinfile:
