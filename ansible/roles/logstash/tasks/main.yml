@@ -7,7 +7,7 @@
     copy:
      src: logstash.repo
      dest: /etc/yum.repos.d/logstash.repo
-     owner: jenkins
+     owner: ec2-user
      mode: 0644
     become: true
 

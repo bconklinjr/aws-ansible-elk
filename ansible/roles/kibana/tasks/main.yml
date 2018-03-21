@@ -7,7 +7,7 @@
     copy:
      src: kibana.repo
      dest: /etc/yum.repos.d/kibana.repo
-     owner: jenkins
+     owner: ec2-user
      mode: 0644
     become: true
 

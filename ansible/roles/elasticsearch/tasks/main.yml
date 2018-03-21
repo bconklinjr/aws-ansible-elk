@@ -7,7 +7,7 @@
     copy:
      src: elasticsearch.repo
      dest: /etc/yum.repos.d/elasticsearch.repo
-     owner: jenkins
+     owner: ec2-user
      mode: 0644
     become: true
 
