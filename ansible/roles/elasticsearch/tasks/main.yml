@@ -35,3 +35,4 @@
     service:
      name: elasticsearch
      state: started
+    become: true
