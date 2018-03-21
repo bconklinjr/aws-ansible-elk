@@ -5,12 +5,12 @@
   tasks:
   - name: Copy Elasticsearch repo
     copy:
-     src=elasticsearch.repo
-     dest=/etc/yum.repos.d/elasticsearch.repo
-     owner=ec2-user
-     group=ec2-user
-     mode=0644
-   become: true
+     src: elasticsearch.repo
+     dest: /etc/yum.repos.d/elasticsearch.repo
+     owner: ec2-user
+     group: ec2-user
+     mode: 0644
+    become: true
 
  - name: Install Elasticsearch
    yum: 
