@@ -1,0 +1,42 @@
+---
+- hosts: all
+  remote-user: ec2-user
+
+  tasks: 
+  - name: Copy kibana repo 
+    copy:
+     src=kibana.repo
+     dest=/etc/yum.repos.d/kibana.repo
+     owner=ec2-user
+     group=ec2-user
+     mode=0644
+    become: true
+
+  - name: Install kibana
+    yum: 
+     name: kibana
+     state: present
+    become: true
+
+  - name: Update the config file to allow outside access
+    lineinfile:
+     destfile: /etc/kibana/kibana.yml
+     regexp: 'server.host:'
+     line: 'server.host: 0.0.0.0'
+
+  - name: Define server port
+    lineinfile:
+     destfile: /etc/kibana/kibana.yml
+     regexp: 'server.port:'
+     line: 'server.port: 5601'
+
+  - name: Define Elasticsearch URL
+    lineinfile:
+     destfile: /etc/kibana/kibana.yml
+     regexp: 'elasticsearch.url:'
+     line: 'elasticsearch.url: "http://localhost:9200"'
+
+  - name: Start Kibana
+    service:
+     name: kibana
+     state: started

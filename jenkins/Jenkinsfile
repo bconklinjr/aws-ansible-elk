@@ -7,4 +7,16 @@ node {
 	stage('Install Java 8') {
 		sh "/usr/local/bin/ansible-playbook -i ansible/ansible_hosts ansible/roles/java8/tasks/main.yml"
 	}
+
+	stage('Install Elasticsearch') {
+		sh "/usr/local/bin/ansible-playbook -i ansible/ansible_hosts ansible/roles/elasticsearch/tasks/main.yml"
+	}
+
+	stage('Install Logstash') {
+		sh "/usr/local/bin/ansible-playbook -i ansible/ansible_hosts ansible/roles/logstash/tasks/main.yml"
+	}
+
+	stage('Install Kibana') {
+		sh "/usr/local/bin/ansible-playbook -i ansible/ansible_hosts ansible/roles/kibana/tasks/main.yml"
+	}
 }
