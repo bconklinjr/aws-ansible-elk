@@ -227,7 +227,7 @@
           "Description" : "Jenkins URL"
         },
         "ELKURL" : {
-          "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["elkTarget", "PublicIp"] }]]},
+          "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["elkTarget", "PublicIp"] }, ":8080"]]},
           "Description" : "ELK Target URL"
         }
     }
