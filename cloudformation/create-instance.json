@@ -223,11 +223,11 @@
 
     "Outputs" : {
         "JenkinsURL" : {
-          "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["jenkins", "PublicIp"] }]]},
+          "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["jenkins", "PublicIp"] }, ":8080"]]},
           "Description" : "Jenkins URL"
         },
         "ELKURL" : {
-          "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["elkTarget", "PublicIp"] }, ":8080"]]},
+          "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["elkTarget", "PublicIp"] }]]},
           "Description" : "ELK Target URL"
         }
     }
