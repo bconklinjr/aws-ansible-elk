@@ -1,6 +1,7 @@
 node {
 	stage('Prepare Ansible Hosts') {
 		checkout scm
+		sh "ssh -o StrictHostKeyChecking=no -i ~/.ssh/Qu5WNMmlJB.pem ec2-user@${elkTarget} echo \" \""
 		sh "echo ${elkTarget} >> ./ansible/ansible_hosts"
 	}
 
